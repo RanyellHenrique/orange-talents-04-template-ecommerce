@@ -12,7 +12,7 @@ public class CategoriaRequest {
     @UniqueValue(classDomain = Categoria.class, fieldName = "nome")
     private String nome;
 
-    @ExistValue(classDomain = Categoria.class, fieldName = "id", isRequired = false )
+    @ExistValue(classDomain = Categoria.class, fieldName = "id")
     private Long categoriaMaeId;
 
     public CategoriaRequest(@JsonProperty("nome") String nome) {

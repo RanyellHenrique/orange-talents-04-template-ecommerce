@@ -17,5 +17,4 @@ public @interface ExistValue {
     Class<? extends Payload>[] payload() default {};
     Class<?> classDomain();
     String fieldName();
-    boolean isRequired();
 }
