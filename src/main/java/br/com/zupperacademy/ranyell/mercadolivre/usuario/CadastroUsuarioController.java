@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.Usuario;
+package br.com.zupperacademy.ranyell.mercadolivre.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

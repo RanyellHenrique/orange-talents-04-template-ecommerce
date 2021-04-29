@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.Usuario;
+package br.com.zupperacademy.ranyell.mercadolivre.usuario;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
