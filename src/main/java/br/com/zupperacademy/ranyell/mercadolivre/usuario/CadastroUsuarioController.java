@@ -14,13 +14,20 @@ import javax.validation.Valid;
 @RequestMapping("/usuarios")
 public class CadastroUsuarioController {
 
+    private UsuarioRepository repository;
+    private PerfilRepository perfilRepository;
+
     @Autowired
-    private  UsuarioRepository repository;
+    public CadastroUsuarioController(UsuarioRepository repository, PerfilRepository perfilRepository) {
+        this.repository = repository;
+        this.perfilRepository = perfilRepository;
+    }
 
     @PostMapping
     @Transactional
     public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioRequest request) {
         var novoUsuario = request.toModel();
+        novoUsuario.addPerfil(perfilRepository.getOne(1L));
         repository.save(novoUsuario);
         return ResponseEntity.ok().build();
     }
