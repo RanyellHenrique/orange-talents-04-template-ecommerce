@@ -19,16 +19,7 @@ public class CaracteristicaRequest {
         return new Caracteristica(nome, descricao, produto);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CaracteristicaRequest)) return false;
-        CaracteristicaRequest that = (CaracteristicaRequest) o;
-        return nome.equals(that.nome);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome);
+    public String getNome() {
+        return nome;
     }
 }

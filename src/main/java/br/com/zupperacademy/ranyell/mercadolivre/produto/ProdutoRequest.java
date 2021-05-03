@@ -6,7 +6,8 @@ import br.com.zupperacademy.ranyell.mercadolivre.utils.ExistValue;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
 
 public class ProdutoRequest {
 
@@ -22,10 +23,10 @@ public class ProdutoRequest {
     private Long categoriaId;
 
     @Size(min = 3) @NotNull
-    private Set<CaracteristicaRequest> caracteristicas;
+    private List<CaracteristicaRequest> caracteristicas;
 
     public ProdutoRequest(String nome, BigDecimal valor, Integer quantidade, String descricao,
-                          Long categoriaId, Set<CaracteristicaRequest> caracteristicas) {
+                          Long categoriaId, List<CaracteristicaRequest> caracteristicas) {
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
@@ -34,15 +35,24 @@ public class ProdutoRequest {
         this.caracteristicas = caracteristicas;
     }
 
-    public Set<CaracteristicaRequest> getCaracteristicas() {
+    public List<CaracteristicaRequest> getCaracteristicas() {
         return caracteristicas;
     }
 
     public Produto toModel(Categoria categoria, Usuario usuario) {
-        return new Produto(nome, valor, quantidade, descricao, categoria, usuario);
+        return new Produto(nome, valor, quantidade, descricao, categoria, usuario, caracteristicas);
     }
 
     public Long getCategoriaId() {
         return categoriaId;
+    }
+
+    public Boolean temCaracteristicasIguais(){
+        var caracteristicasIguais = new HashSet<String>();
+        for(CaracteristicaRequest c : caracteristicas) {
+            if(!caracteristicasIguais.add(c.getNome()))
+                return true;
+        }
+        return false;
     }
 }

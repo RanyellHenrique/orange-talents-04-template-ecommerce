@@ -20,4 +20,17 @@ public class Caracteristica {
         this.descricao = descricao;
         this.produto = produto;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Caracteristica)) return false;
+        Caracteristica that = (Caracteristica) o;
+        return nome.equals(that.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
+    }
 }

@@ -2,12 +2,15 @@ package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
+import io.jsonwebtoken.lang.Assert;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Produto {
@@ -36,7 +39,8 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal valor, Integer quantidade, String descricao, Categoria categoria, Usuario usuario) {
+    public Produto(String nome, BigDecimal valor, Integer quantidade, String descricao, Categoria categoria,
+                   Usuario usuario, List<CaracteristicaRequest> caracteristicaRequests) {
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
@@ -44,9 +48,7 @@ public class Produto {
         this.categoria = categoria;
         this.usuario = usuario;
         this.criadoEm = Instant.now();
-    }
-
-    public void addCaracteristica(Caracteristica caracteristica) {
-        this.caracteristicas.add(caracteristica);
+        this.caracteristicas = caracteristicaRequests.stream().map(c -> c.toModel(this)).collect(Collectors.toSet());
+        Assert.isTrue(this.caracteristicas.size() >= 3, "O Produto precisa ter no minimo 3 caracteristicas");
     }
 }
