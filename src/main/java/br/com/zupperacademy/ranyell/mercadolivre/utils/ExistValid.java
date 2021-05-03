@@ -11,6 +11,7 @@ public class ExistValid implements ConstraintValidator<ExistValue, Object> {
 
     private String fieldName;
     private Class<?> classDomain;
+    private Boolean required;
 
     @PersistenceContext
     private EntityManager manager;
@@ -20,6 +21,7 @@ public class ExistValid implements ConstraintValidator<ExistValue, Object> {
     public void initialize(ExistValue constraintAnnotation) {
         this.classDomain = constraintAnnotation.classDomain();
         this.fieldName = constraintAnnotation.fieldName();
+        this.required = constraintAnnotation.required();
     }
 
     /*
@@ -30,7 +32,7 @@ public class ExistValid implements ConstraintValidator<ExistValue, Object> {
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if(value == null) return true;
+        if(value == null && !required) return true;
         Query query = manager.createQuery("select 1 from "+classDomain.getSimpleName()+ " where "+fieldName+ " = :value");
         query.setParameter("value", value);
         List<?> list = query.getResultList();
