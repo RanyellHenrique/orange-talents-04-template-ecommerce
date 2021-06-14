@@ -26,23 +26,10 @@ public class DetalhesProdutoResponse {
         this.valor = produto.getValor();
         this.mediaDeNotas = mediaDeNotas;
         this.totalDeNotas = totalDeNotas;
-
-        this.caracteristicas = produto.getCaracteristicas()
-                .stream()
-                .map(DetalhesCaracteristicaResponse::new)
-                .collect(Collectors.toList());
-        this.opinioes = produto.getOpinioes()
-                .stream()
-                .map(DetalhesOpiniaoResponse::new)
-                .collect(Collectors.toList());
-        this.perguntas = produto.getPerguntas()
-                .stream()
-                .map(Pergunta::getTitulo)
-                .collect(Collectors.toList());
-        this.links = produto.getImagens()
-                .stream()
-                .map(ImagemProduto::getUrl)
-                .collect(Collectors.toList());
+        this.caracteristicas = produto.mapeiaCaracteristicas(DetalhesCaracteristicaResponse::new);
+        this.opinioes = produto.mapeiaOpinioes(DetalhesOpiniaoResponse::new);
+        this.perguntas = produto.mapeiaPerguntas(Pergunta::getTitulo);
+        this.links = produto.mapeiaImagens(ImagemProduto::getUrl);
     }
 
     public List<String> getLinks() {

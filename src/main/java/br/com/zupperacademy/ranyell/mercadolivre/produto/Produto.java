@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Entity
@@ -104,19 +105,23 @@ public class Produto {
         return categoria;
     }
 
-    public Set<Caracteristica> getCaracteristicas() {
-        return caracteristicas;
+    public <T> List<T> mapeiaImagens(Function<ImagemProduto, T> funcaoMapeadora) {
+        return this.imagens.stream().map(funcaoMapeadora)
+                .collect(Collectors.toList());
     }
 
-    public List<ImagemProduto> getImagens() {
-        return imagens;
+    public <T> List<T> mapeiaCaracteristicas(Function<Caracteristica, T> funcaoMapeadora) {
+        return this.caracteristicas.stream().map(funcaoMapeadora)
+                .collect(Collectors.toList());
     }
 
-    public List<Opiniao> getOpinioes() {
-        return opinioes;
+    public <T> List<T> mapeiaOpinioes(Function<Opiniao, T> funcaoMapeadora) {
+        return this.opinioes.stream().map(funcaoMapeadora)
+                .collect(Collectors.toList());
     }
 
-    public List<Pergunta> getPerguntas() {
-        return perguntas;
+    public <T> List<T> mapeiaPerguntas(Function<Pergunta, T> funcaoMapeadora) {
+        return this.perguntas.stream().map(funcaoMapeadora)
+                .collect(Collectors.toList());
     }
 }
