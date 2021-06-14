@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.imagens;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.imagem;
 
 import org.springframework.web.multipart.MultipartFile;
 

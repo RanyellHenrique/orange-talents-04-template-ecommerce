@@ -1,8 +1,9 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
-import br.com.zupperacademy.ranyell.mercadolivre.produto.imagens.ImagemProduto;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.imagem.ImagemProduto;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao.Opiniao;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta.Pergunta;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.util.Assert;
 
@@ -43,6 +44,9 @@ public class Produto {
     @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Opiniao> opinioes = new ArrayList<>();
 
+    @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Pergunta> perguntas = new ArrayList<>();
+
     @Deprecated
     public Produto() {
     }
@@ -70,5 +74,9 @@ public class Produto {
 
     public  void addOpiniao(Opiniao opiniao) {
         this.opinioes.add(opiniao);
+    }
+
+    public void addPergunta(Pergunta pergunta) {
+        this.perguntas.add(pergunta);
     }
 }

@@ -17,14 +17,16 @@ public class OpiniaoRequest {
     @Min(1)
     @Max(5)
     private Integer nota;
+    @NotBlank
+    private String titulo;
 
-    public OpiniaoRequest(String descricao, Integer nota) {
+    public OpiniaoRequest(String descricao, Integer nota, String titulo) {
         this.descricao = descricao;
         this.nota = nota;
+        this.titulo = titulo;
     }
 
-
     public Opiniao toModel(Usuario usuario, Produto produto) {
-        return  new Opiniao(descricao, usuario, produto, nota);
+        return new Opiniao(descricao, titulo, nota, usuario, produto);
     }
 }

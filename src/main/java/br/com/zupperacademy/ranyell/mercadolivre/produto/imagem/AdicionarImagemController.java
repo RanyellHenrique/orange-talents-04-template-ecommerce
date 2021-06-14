@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.imagens;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.imagem;
 
 import br.com.zupperacademy.ranyell.mercadolivre.produto.ProdutoRepository;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
@@ -31,8 +31,8 @@ public class AdicionarImagemController {
 
     @PostMapping("/{id}/imagens")
     @Transactional
-    public ResponseEntity<Void> insertImage(@Valid ImagensRequest request,
-                                            @AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id) {
+    public ResponseEntity<Void> cadastra(@Valid ImagensRequest request,
+                                         @AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id) {
         var possivelproduto = produtoRepository.findById(id);
         if (possivelproduto.isEmpty()) {
             return ResponseEntity.notFound().build();

@@ -1,48 +1,38 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta;
 
 import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
-public class Opiniao {
+public class Pergunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank @Length(max = 500)
-    private String descricao;
-
     @NotBlank
     private String titulo;
-
-    @NotNull
-    @Max(5) @Min(1)
-    private Integer nota;
-
     @NotNull
     @ManyToOne
     private Usuario usuario;
-
     @NotNull
     @ManyToOne
     private Produto produto;
+    @NotNull
+    private LocalDateTime criadoEm;
 
     @Deprecated
-    public Opiniao() {
+    public Pergunta() {
     }
 
-    public Opiniao(String descricao, String titulo, Integer nota, Usuario usuario, Produto produto) {
-        this.descricao = descricao;
+    public Pergunta(String titulo, Usuario usuario, Produto produto) {
         this.titulo = titulo;
-        this.nota = nota;
         this.usuario = usuario;
         this.produto = produto;
+        this.criadoEm = LocalDateTime.now();
     }
 }

@@ -1,9 +1,8 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.imagens;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.imagem;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ImagensRequest {
