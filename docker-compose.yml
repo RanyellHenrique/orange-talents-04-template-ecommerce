@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  db:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=db_mercado_livre
+      - MYSQL_PASSWORD=1234
