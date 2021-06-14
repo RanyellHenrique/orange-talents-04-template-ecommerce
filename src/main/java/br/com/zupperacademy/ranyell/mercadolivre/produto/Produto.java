@@ -79,4 +79,44 @@ public class Produto {
     public void addPergunta(Pergunta pergunta) {
         this.perguntas.add(pergunta);
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Instant getCriadoEm() {
+        return criadoEm;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public List<ImagemProduto> getImagens() {
+        return imagens;
+    }
+
+    public List<Opiniao> getOpinioes() {
+        return opinioes;
+    }
+
+    public List<Pergunta> getPerguntas() {
+        return perguntas;
+    }
 }

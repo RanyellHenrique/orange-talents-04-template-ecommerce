@@ -35,4 +35,8 @@ public class Pergunta {
         this.produto = produto;
         this.criadoEm = LocalDateTime.now();
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
 }
