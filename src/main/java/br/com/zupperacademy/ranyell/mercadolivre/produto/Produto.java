@@ -2,6 +2,7 @@ package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.imagens.ImagemProduto;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao.Opiniao;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.util.Assert;
 
@@ -36,8 +37,11 @@ public class Produto {
     @OneToMany(mappedBy = "produto", cascade = CascadeType.PERSIST)
     Set<Caracteristica> caracteristicas = new HashSet<>();
 
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<ImagemProduto> imagens = new ArrayList<>();
+
+    @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Opiniao> opinioes = new ArrayList<>();
 
     @Deprecated
     public Produto() {
@@ -60,7 +64,11 @@ public class Produto {
         return usuario;
     }
 
-    public void addImagem(ImagemProduto imagem) {
-        imagens.add(imagem);
+    public void addAllImagens(List<ImagemProduto> imagens) {
+        this.imagens.addAll(imagens);
+    }
+
+    public  void addOpiniao(Opiniao opiniao) {
+        this.opinioes.add(opiniao);
     }
 }

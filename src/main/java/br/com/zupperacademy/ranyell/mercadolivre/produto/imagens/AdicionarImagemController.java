@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -32,22 +33,21 @@ public class AdicionarImagemController {
     @Transactional
     public ResponseEntity<Void> insertImage(@Valid ImagensRequest request,
                                             @AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id) {
-        if (!produtoRepository.existsById(id)) {
+        var possivelproduto = produtoRepository.findById(id);
+        if (possivelproduto.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        var produto = produtoRepository.findById(id).get();
+        var produto = possivelproduto.get();
 
         if (!produto.getUsuario().getUsername().equals(usuario.getUsername())) {
             return ResponseEntity.status(403).build();
         }
-        request.getImagens().stream()
+        List<ImagemProduto> imagens = request.getImagens().stream()
                 .map(imagem -> uploader.upload(imagem))
                 .map(url -> new ImagemProduto(url, produto))
-                .map(imagem -> {
-                    produto.addImagem(imagem);
-                    return imagem;
-                })
                 .collect(Collectors.toList());
+
+        produto.addAllImagens(imagens);
         produtoRepository.save(produto);
         return ResponseEntity.ok().build();
     }
