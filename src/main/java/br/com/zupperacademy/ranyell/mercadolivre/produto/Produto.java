@@ -1,6 +1,7 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.CaracteristicaRequest;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.imagem.ImagemProduto;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao.Opiniao;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta.Pergunta;
@@ -8,6 +9,7 @@ import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -123,5 +125,13 @@ public class Produto {
     public <T> List<T> mapeiaPerguntas(Function<Pergunta, T> funcaoMapeadora) {
         return this.perguntas.stream().map(funcaoMapeadora)
                 .collect(Collectors.toList());
+    }
+
+    public Boolean abateEstoque(@Positive Integer quantidade) {
+        if(quantidade > this.quantidade) {
+           return false;
+        }
+        this.quantidade -= quantidade;
+        return true;
     }
 }

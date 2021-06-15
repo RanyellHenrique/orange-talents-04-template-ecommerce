@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta;
+package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.stereotype.Component;

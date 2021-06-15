@@ -1,6 +1,8 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.CategoriaRepository;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.ProdutoRepository;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/produtos")

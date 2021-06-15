@@ -1,5 +1,6 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta;
 
+import br.com.zupperacademy.ranyell.mercadolivre.produto.EnviaEmail;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.ProdutoRepository;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.http.ResponseEntity;

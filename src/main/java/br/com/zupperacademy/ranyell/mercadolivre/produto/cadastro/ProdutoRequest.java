@@ -1,6 +1,7 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import br.com.zupperacademy.ranyell.mercadolivre.utils.ExistValue;
 

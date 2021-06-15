@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta;
+package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.slf4j.Logger;
@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EnviarEmailFake implements EnviaEmail {
+public class EnviaEmailFake implements EnviaEmail {
 
     private final Logger LOOGER = LoggerFactory.getLogger(this.getClass());
 

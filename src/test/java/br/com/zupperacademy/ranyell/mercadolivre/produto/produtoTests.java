@@ -1,12 +1,13 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.CaracteristicaRequest;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.ProdutoRequest;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

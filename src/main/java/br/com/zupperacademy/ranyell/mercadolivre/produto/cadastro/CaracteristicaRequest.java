@@ -1,4 +1,7 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
+
+import br.com.zupperacademy.ranyell.mercadolivre.produto.Caracteristica;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
