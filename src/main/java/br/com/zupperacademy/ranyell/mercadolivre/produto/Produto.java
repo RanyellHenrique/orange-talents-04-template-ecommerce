@@ -1,7 +1,7 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
-import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.CaracteristicaRequest;
+import br.com.zupperacademy.ranyell.mercadolivre.cadastro.CaracteristicaRequest;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.imagem.ImagemProduto;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao.Opiniao;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta.Pergunta;

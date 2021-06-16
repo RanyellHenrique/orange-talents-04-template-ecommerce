@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.compra;
+package br.com.zupperacademy.ranyell.mercadolivre.compra;
 
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -12,7 +12,7 @@ public enum FormaDePagamento {
                     .toString();
             return "paypal.com/" + compra.getId() + "&redirectUrl=" + url;
         }
-    }, PAG_SEGURO {
+    }, PAGSEGURO {
         @Override
         public String pagamento(Compra compra, UriComponentsBuilder uri) {
             var url = uri

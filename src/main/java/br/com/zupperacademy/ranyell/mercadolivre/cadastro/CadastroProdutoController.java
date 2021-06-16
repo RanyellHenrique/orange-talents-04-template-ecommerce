@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
+package br.com.zupperacademy.ranyell.mercadolivre.cadastro;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.CategoriaRepository;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;

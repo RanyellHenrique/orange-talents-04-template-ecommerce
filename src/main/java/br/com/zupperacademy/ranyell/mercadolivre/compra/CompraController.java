@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.compra;
+package br.com.zupperacademy.ranyell.mercadolivre.compra;
 
 import br.com.zupperacademy.ranyell.mercadolivre.produto.EnviaEmailFake;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.ProdutoRepository;
@@ -8,15 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.net.URI;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/compras")
 public class CompraController {
 
     private ProdutoRepository produtoRepository;
@@ -31,12 +29,12 @@ public class CompraController {
         this.compraRepository = compraRepository;
     }
 
-    @PostMapping("/{id}/compras")
+    @PostMapping
     @Transactional
-    public ResponseEntity<?> compra(@Valid @RequestBody CompraRequest request, @PathVariable Long id,
+    public ResponseEntity<?> compra(@Valid @RequestBody CompraRequest request,
                                     @AuthenticationPrincipal Usuario usuario,
                                     UriComponentsBuilder uriBuilder) throws BindException {
-        var possivelProduto = produtoRepository.findById(id);
+        var possivelProduto = produtoRepository.findById(request.getProdutoId());
 
         if (possivelProduto.isEmpty()) {
             return ResponseEntity.notFound().build();

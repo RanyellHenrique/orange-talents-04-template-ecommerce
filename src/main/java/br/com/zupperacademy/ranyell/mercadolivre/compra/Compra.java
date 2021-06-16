@@ -1,13 +1,18 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.compra;
+package br.com.zupperacademy.ranyell.mercadolivre.compra;
 
 import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
+import br.com.zupperacademy.ranyell.mercadolivre.transacao.Transacao;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
+import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Compra {
@@ -33,6 +38,13 @@ public class Compra {
     @ManyToOne
     @NotNull
     private Usuario cliente;
+
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.MERGE)
+    private Set<Transacao> transacoes = new HashSet<>();
+
+    @Deprecated
+    public Compra() {
+    }
 
     public Compra(FormaDePagamento formaDePagamento, Integer quantidade, BigDecimal valorUnitario, Produto produto, Usuario cliente) {
         this.formaDePagamento = formaDePagamento;
@@ -73,5 +85,27 @@ public class Compra {
 
     public String urlRedirecionamento(UriComponentsBuilder uri) {
         return this.formaDePagamento.pagamento(this, uri);
+    }
+
+    public void addTransacao(Transacao transacao) {
+
+        Assert.isTrue(transacoesConcluidasComSucesso().size() <= 1,"Deu ruim deu ruim deu ruim, tem mais de uma transacao concluida com sucesso aqui na compra "+this.id);
+
+        transacoes.add(transacao);
+        statusDaCompra = transacao.getStatus().getStatusDaCompra();
+    }
+
+    private Set<Transacao> transacoesConcluidasComSucesso() {
+        Set<Transacao> transacoesConcluidasComSucesso = this.transacoes.stream()
+                .filter(Transacao::ConcluidaComSucesso)
+                .collect(Collectors.toSet());
+
+        Assert.isTrue(transacoesConcluidasComSucesso.size() <= 1,"Deu ruim deu ruim deu ruim, tem mais de uma transacao concluida com sucesso aqui na compra "+this.id);
+
+        return transacoesConcluidasComSucesso;
+    }
+
+    public boolean processadaComSucesso() {
+        return !transacoesConcluidasComSucesso().isEmpty();
     }
 }

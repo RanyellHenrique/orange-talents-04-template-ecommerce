@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
+package br.com.zupperacademy.ranyell.mercadolivre.cadastro;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
