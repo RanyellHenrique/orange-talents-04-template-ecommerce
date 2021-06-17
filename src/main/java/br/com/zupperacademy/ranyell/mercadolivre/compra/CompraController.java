@@ -1,6 +1,6 @@
 package br.com.zupperacademy.ranyell.mercadolivre.compra;
 
-import br.com.zupperacademy.ranyell.mercadolivre.produto.EnviaEmailFake;
+import br.com.zupperacademy.ranyell.mercadolivre.fakes.EnviaEmailFake;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.ProdutoRepository;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;

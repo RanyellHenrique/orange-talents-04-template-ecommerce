@@ -1,7 +1,7 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
-import br.com.zupperacademy.ranyell.mercadolivre.cadastro.CaracteristicaRequest;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.CaracteristicaRequest;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.imagem.ImagemProduto;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.opiniao.Opiniao;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.pergunta.Pergunta;
@@ -38,16 +38,16 @@ public class Produto {
     @ManyToOne
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     Set<Caracteristica> caracteristicas = new HashSet<>();
 
     @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<ImagemProduto> imagens = new ArrayList<>();
 
-    @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "produto", cascade = {CascadeType.ALL})
     private List<Opiniao> opinioes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "produto", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "produto", cascade = {CascadeType.ALL})
     private List<Pergunta> perguntas = new ArrayList<>();
 
     @Deprecated
@@ -133,5 +133,17 @@ public class Produto {
         }
         this.quantidade -= quantidade;
         return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Opiniao> getOpinioes() {
+        return opinioes;
+    }
+
+    public List<Pergunta> getPerguntas() {
+        return perguntas;
     }
 }

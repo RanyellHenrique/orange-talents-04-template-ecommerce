@@ -22,4 +22,12 @@ public class UsuarioRequest {
     public Usuario toModel() {
         return new Usuario(email, senha);
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 }

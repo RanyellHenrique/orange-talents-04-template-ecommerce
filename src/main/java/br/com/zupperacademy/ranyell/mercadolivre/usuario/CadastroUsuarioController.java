@@ -27,7 +27,7 @@ public class CadastroUsuarioController {
     @Transactional
     public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioRequest request) {
         var novoUsuario = request.toModel();
-        novoUsuario.addPerfil(perfilRepository.getOne(1L));
+        novoUsuario.addPerfil(perfilRepository.findById(1L).orElse(new Perfil("Cliente")));
         repository.save(novoUsuario);
         return ResponseEntity.ok().build();
     }

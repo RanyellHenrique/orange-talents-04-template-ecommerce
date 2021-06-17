@@ -29,4 +29,16 @@ public class OpiniaoRequest {
     public Opiniao toModel(Usuario usuario, Produto produto) {
         return new Opiniao(descricao, titulo, nota, usuario, produto);
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Integer getNota() {
+        return nota;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 }

@@ -18,5 +18,7 @@ public class PerguntaRequest {
         return new Pergunta(titulo, usuario, produto);
     }
 
-
+    public String getTitulo() {
+        return titulo;
+    }
 }

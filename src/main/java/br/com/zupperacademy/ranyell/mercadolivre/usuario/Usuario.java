@@ -22,7 +22,7 @@ public class Usuario implements UserDetails {
     private String senha;
     private Instant criadoEm;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Perfil> perfils = new HashSet<>();
 
     @Deprecated

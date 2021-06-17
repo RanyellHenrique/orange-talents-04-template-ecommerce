@@ -1,8 +1,8 @@
 package br.com.zupperacademy.ranyell.mercadolivre.produto;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
-import br.com.zupperacademy.ranyell.mercadolivre.cadastro.CaracteristicaRequest;
-import br.com.zupperacademy.ranyell.mercadolivre.cadastro.ProdutoRequest;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.CaracteristicaRequest;
+import br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro.ProdutoRequest;
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

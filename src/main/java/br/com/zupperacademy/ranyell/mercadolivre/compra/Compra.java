@@ -39,7 +39,7 @@ public class Compra {
     @NotNull
     private Usuario cliente;
 
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
     private Set<Transacao> transacoes = new HashSet<>();
 
     @Deprecated

@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.produto;
+package br.com.zupperacademy.ranyell.mercadolivre.fakes;
 
 import br.com.zupperacademy.ranyell.mercadolivre.usuario.Usuario;
 import org.slf4j.Logger;

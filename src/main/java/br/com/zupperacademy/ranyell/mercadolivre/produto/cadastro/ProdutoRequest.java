@@ -1,4 +1,4 @@
-package br.com.zupperacademy.ranyell.mercadolivre.cadastro;
+package br.com.zupperacademy.ranyell.mercadolivre.produto.cadastro;
 
 import br.com.zupperacademy.ranyell.mercadolivre.categoria.Categoria;
 import br.com.zupperacademy.ranyell.mercadolivre.produto.Produto;
@@ -55,5 +55,21 @@ public class ProdutoRequest {
                 return true;
         }
         return false;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
